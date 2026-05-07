@@ -7,11 +7,18 @@ export const noteService = {
       API_ENDPOINTS.NOTES.ADD(leadId),
       { content, createdBy }
     );
-    return response.data;
+    const notes = response.data?.data?.notes || [];
+    return {
+      note: notes[notes.length - 1] || null,
+      notes,
+    };
   },
 
   getNotes: async (leadId) => {
-    const response = await axiosInstance.get(API_ENDPOINTS.NOTES.LIST(leadId));
-    return response.data;
+    // Backend exposes notes inside lead payload; use lead details endpoint for notes list.
+    const response = await axiosInstance.get(API_ENDPOINTS.LEADS.GET(leadId));
+    return {
+      notes: response.data?.data?.notes || [],
+    };
   },
 };

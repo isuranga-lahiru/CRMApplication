@@ -270,7 +270,7 @@ export const LeadsPage = () => {
       </div>
 
       <Modal isOpen={isModalOpen} onClose={closeModal} title={editingLead ? 'Edit Lead' : 'Create Lead'} size="xl">
-        <LeadForm initialData={editingLead} onSubmit={handleSubmitForm} loading={formLoading} />
+        <LeadForm key={editingLead?._id || 'new'} initialData={editingLead} onSubmit={handleSubmitForm} loading={formLoading} />
       </Modal>
 
       <ConfirmDialog

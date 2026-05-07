@@ -44,7 +44,9 @@ export const LeadDetailsPage = () => {
     setNoteError('');
     try {
       const response = await noteService.addNote(id, noteData.content, noteData.createdBy);
-      setNotes((prev) => [response.note, ...prev]);
+      if (response.note) {
+        setNotes((prev) => [response.note, ...prev]);
+      }
     } catch (err) {
       setNoteError(err.response?.data?.message || 'Unable to add note.');
     } finally {

@@ -5,7 +5,7 @@
 
 const mongoose = require('mongoose');
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^\+?[1-9]\d{7,14}$/;
+const phoneRegex = /^\+?\d{7,15}$/;
 
 const noteSchema = new mongoose.Schema(
   {

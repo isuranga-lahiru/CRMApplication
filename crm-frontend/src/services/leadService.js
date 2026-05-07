@@ -4,17 +4,20 @@ import { API_ENDPOINTS } from '../utils/constants';
 export const leadService = {
   getAllLeads: async (params = {}) => {
     const response = await axiosInstance.get(API_ENDPOINTS.LEADS.LIST, { params });
-    return response.data;
+    return {
+      ...response.data,
+      leads: response.data?.leads || [],
+    };
   },
 
   getLeadById: async (id) => {
     const response = await axiosInstance.get(API_ENDPOINTS.LEADS.GET(id));
-    return response.data;
+    return response.data?.data;
   },
 
   createLead: async (leadData) => {
     const response = await axiosInstance.post(API_ENDPOINTS.LEADS.CREATE, leadData);
-    return response.data;
+    return response.data?.data;
   },
 
   updateLead: async (id, leadData) => {
@@ -22,7 +25,7 @@ export const leadService = {
       API_ENDPOINTS.LEADS.UPDATE(id),
       leadData
     );
-    return response.data;
+    return response.data?.data;
   },
 
   deleteLead: async (id) => {
