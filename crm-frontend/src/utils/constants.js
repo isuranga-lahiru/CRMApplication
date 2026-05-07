@@ -11,7 +11,7 @@ export const API_ENDPOINTS = {
     DELETE: (id) => `/leads/${id}`,
   },
   DASHBOARD: {
-    STATS: '/dashboard',
+    STATS: '/dashboard/stats',
   },
   NOTES: {
     ADD: (leadId) => `/leads/${leadId}/notes`,

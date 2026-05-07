@@ -35,7 +35,7 @@ export const LeadsPage = () => {
   const [deleting, setDeleting] = useState(false);
 
   const { data: leadsData, loading, error, refetch } = useApi(() => leadService.getAllLeads(), []);
-  const leads = leadsData?.leads || [];
+  const leads = useMemo(() => leadsData?.leads ?? [], [leadsData]);
 
   const salespersonOptions = useMemo(() => [...new Set(leads.map((lead) => lead.assignedSalesperson).filter(Boolean))], [leads]);
 

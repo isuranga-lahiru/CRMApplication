@@ -3,7 +3,9 @@ import { API_ENDPOINTS } from '../utils/constants';
 
 export const dashboardService = {
   getStats: async () => {
-    const response = await axiosInstance.get(API_ENDPOINTS.DASHBOARD.STATS);
+    const response = await axiosInstance.get(API_ENDPOINTS.DASHBOARD.STATS, {
+      timeout: 30000,
+    });
     return response.data;
   },
 };

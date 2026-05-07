@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { FiGrid, FiLogOut, FiUsers, FiX } from 'react-icons/fi';
+import { FiBarChart2, FiGrid, FiLogOut, FiUsers, FiX } from 'react-icons/fi';
 import { useAuth } from '../../hooks/useAuth';
 import { cn } from '../../utils/cn';
 
@@ -8,6 +8,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
 
   const navItems = [
     { label: 'Dashboard', to: '/', icon: FiGrid },
+    { label: 'Pipeline', to: '/pipeline', icon: FiBarChart2 },
     { label: 'Leads', to: '/leads', icon: FiUsers },
   ];
 
