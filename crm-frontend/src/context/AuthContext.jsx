@@ -1,24 +1,14 @@
-import { createContext, useState, useEffect, useCallback } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useState, useCallback } from 'react';
 import { authService } from '../services/authService';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(() => authService.getStoredUser());
+  const [token, setToken] = useState(() => authService.getStoredToken());
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const storedToken = authService.getStoredToken();
-    const storedUser = authService.getStoredUser();
-
-    if (storedToken && storedUser) {
-      setToken(storedToken);
-      setUser(storedUser);
-    }
-    setLoading(false);
-  }, []);
 
   const login = useCallback(async (email, password) => {
     setLoading(true);

@@ -1,10 +1,17 @@
 export const AuthLayout = ({ children }) => {
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-950 p-4">
-      <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-blue-500/30 blur-3xl" />
-      <div className="absolute -right-20 bottom-4 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl" />
-      <div className="absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
-      <div className="w-full max-w-md">{children}</div>
+    <div className="grid min-h-screen grid-cols-1 bg-slate-50 lg:grid-cols-2">
+      <div className="hidden border-r border-slate-200 bg-white p-10 lg:flex lg:flex-col lg:justify-between">
+        <div>
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-900 font-semibold text-white">C</div>
+          <h2 className="mt-6 text-3xl font-semibold text-slate-900">Clean CRM for modern sales teams</h2>
+          <p className="mt-3 max-w-md text-sm text-slate-500">
+            Track leads, manage status updates, and collaborate with context-rich notes in one focused workspace.
+          </p>
+        </div>
+        <p className="text-sm text-slate-400">Internship Assessment UI</p>
+      </div>
+      <div className="flex items-center justify-center p-4 sm:p-8">{children}</div>
     </div>
   );
 };

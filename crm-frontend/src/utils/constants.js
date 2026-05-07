@@ -38,12 +38,12 @@ export const LEAD_SOURCE_OPTIONS = [
 ];
 
 export const STATUS_COLORS = {
-  New: 'border border-blue-200 bg-blue-100/80 text-blue-700',
-  Contacted: 'border border-amber-200 bg-amber-100/80 text-amber-700',
-  Qualified: 'border border-violet-200 bg-violet-100/80 text-violet-700',
-  'Proposal Sent': 'border border-indigo-200 bg-indigo-100/80 text-indigo-700',
-  Won: 'border border-emerald-200 bg-emerald-100/80 text-emerald-700',
-  Lost: 'border border-rose-200 bg-rose-100/80 text-rose-700',
+  New: 'border border-sky-200 bg-sky-50 text-sky-700',
+  Contacted: 'border border-amber-200 bg-amber-50 text-amber-700',
+  Qualified: 'border border-violet-200 bg-violet-50 text-violet-700',
+  'Proposal Sent': 'border border-indigo-200 bg-indigo-50 text-indigo-700',
+  Won: 'border border-emerald-200 bg-emerald-50 text-emerald-700',
+  Lost: 'border border-rose-200 bg-rose-50 text-rose-700',
 };
 
 export const STATUS_LABEL_MAP = {

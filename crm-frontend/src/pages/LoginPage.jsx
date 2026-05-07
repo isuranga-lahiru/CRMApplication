@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { FiLock } from 'react-icons/fi';
 import { useAuth } from '../hooks/useAuth';
 import { AuthLayout } from '../layouts/AuthLayout';
-import { Card } from '../components/Card';
-import { Input } from '../components/Input';
-import { Button } from '../components/Button';
+import { Card } from '../components/ui/Card';
+import { Input } from '../components/ui/Input';
+import { Button } from '../components/ui/Button';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -24,7 +24,6 @@ export const LoginPage = () => {
     e.preventDefault();
     setError('');
     setLoading(true);
-
     try {
       await login(email, password);
       navigate('/', { replace: true });
@@ -37,53 +36,27 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout>
-      <Card className="glass-strong space-y-8 border-white/35 p-8 shadow-2xl shadow-slate-950/25 sm:p-10">
+      <Card className="w-full max-w-md p-8">
         <div className="text-center">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-700/30">
-            <FiLock size={22} />
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-slate-900 text-white">
+            <FiLock size={18} />
           </div>
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Astra CRM</p>
-          <h1 className="mb-2 mt-2 text-3xl font-bold text-slate-900 ">Welcome Back</h1>
-          <p className="text-slate-500">Sign in to continue to your sales command center.</p>
+          <h1 className="mt-4 text-2xl font-semibold text-slate-900">Welcome back</h1>
+          <p className="mt-1 text-sm text-slate-500">Sign in to continue to your CRM dashboard.</p>
         </div>
 
-        {error && (
-          <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">
-            {error}
-          </div>
-        )}
+        {error && <p className="mt-4 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">{error}</p>}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <Input
-            label="Email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="admin@example.com"
-            required
-          />
-          <Input
-            label="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            required
-          />
-
-          <Button type="submit" className="w-full" disabled={loading || authLoading}>
-            {loading ? 'Signing in...' : 'Sign In'}
+        <form onSubmit={handleSubmit} className="mt-5 space-y-4">
+          <Input label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <Button type="submit" className="w-full" loading={loading || authLoading}>
+            Sign In
           </Button>
         </form>
 
-        <div className="rounded-xl border border-blue-200/80 bg-blue-50/80 p-4">
-          <p className="text-sm text-blue-900">
-            <strong>Demo Credentials:</strong>
-            <br />
-            Email: admin@example.com
-            <br />
-            Password: password123
-          </p>
+        <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs text-slate-600">
+          Demo: admin@example.com / password123
         </div>
       </Card>
     </AuthLayout>
